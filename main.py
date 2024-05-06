@@ -15,6 +15,7 @@ from selenium.webdriver import ChromeOptions
 # options = webdriver.ChromeOptions()
 # options.add_argument("--incognito")
 # options.add_argument("--headless")
+options.binary_location = "/usr/bin/google-chrome" 
 
 # driver = webdriver.Chrome(options=options)
 
