@@ -11,7 +11,7 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument("--window-size=1920,1080")
-driver = webdriver.Chrome(options=chrome_options)
+# driver = webdriver.Chrome(options=chrome_options)
 
 # options = webdriver.ChromeOptions()
 # options.add_argument("--incognito")
@@ -23,7 +23,8 @@ options=ChromeOptions()
 options.add_argument("--incognito")
 options.add_argument("--headless")
 
-driver.get("https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html")
+start_chrome("https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html", headless=True)
+
 
 # Click random point on the page to scroll down
 
