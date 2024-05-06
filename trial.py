@@ -19,7 +19,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 # # driver = webdriver.Chrome(options=options)
 
-options=chrome_options()
+options=ChromeOptions()
 # options.add_argument("--incognito")
 # options.add_argument("--headless")
 
