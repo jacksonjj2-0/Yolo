@@ -4,8 +4,29 @@ from helium import *
 import time
 import threading
 from selenium import webdriver
-
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver import ChromeOptions
+
+
+
+options=ChromeOptions()
+options.add_argument("--incognito")
+options.add_argument("--headless")
+# Assuming ChromeDriver is in the PATH or specified with webdriver.Chrome(executable_path=...)
+
+# options = Options()
+options.add_argument("--no-sandbox")  # Bypass OS security model
+options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+options.add_argument("--disable-gpu")  #
+options.add_argument("--no-sandbox")
+# options.add_argument('--headless')
+# options.add_argument('--disable-gpu')
+# options.add_argument('--disable-dev-shm-usage')
+# options.add_argument("--window-size=1920,1080")
+# driver = webdriver.Chrome(options=options)
+
 
 print("Execution Started")
 
@@ -136,21 +157,25 @@ def mibor_yesterday_date():
         return ten_days_ago.strftime("%d %b %Y")
     else:
         return yesterday.strftime("%d %b %Y")
+# options = webdriver.ChromeOptions()
+# options.add_argument("--incognito")
+# options.add_argument("--headless")
+
+# driver = webdriver.Chrome(options=options)
+
+
 
 
 # Main function to check yesterday's rate
 def fetch_mibor_rate():
+    
     retry_count = 0
     max_retries = 5
     while retry_count < max_retries:
         # Start chrome and open URL
         # start_chrome("https://www.fbil.org.in/#/home", headless=True)
-        start_chrome("https://www.fbil.org.in/#/home", headless=True)
-        time.sleep(20)
-
-        if Text('Our website uses cookies').exists():
-          click('I understand and I accept the use of cookies')
-
+        start_chrome("https://www.fbil.org.in/#/home", options=options)
+        print("done")
         # Click random point on the page to scroll down
         click('MONEY MARKET/INTEREST RATES')
        
@@ -187,6 +212,7 @@ def fetch_mibor_rate():
             print("Element Mibor not found at the specified location.")
             return(elementnoneError)
 
+
 # USDINR Spot Code Part
 
 # Main function to check yesterday's rate
@@ -195,7 +221,7 @@ def fetch_USDINR_Spot():
     max_retries = 5
     while retry_count < max_retries:
         # Start chrome and open URL
-        start_chrome("https://www.fbil.org.in/#/home", headless=True)
+        start_chrome("https://www.fbil.org.in/#/home", options=options)
 
         if Text('Our website uses cookies').exists():
           click('I understand and I accept the use of cookies')
@@ -246,7 +272,7 @@ def fetch_6M():
     max_retries = 5
     while retry_count < max_retries:
         # Start chrome and open URL
-        start_chrome("https://www.fbil.org.in/#/home", headless=True)
+        start_chrome("https://www.fbil.org.in/#/home", options=options)
 
         if Text('Our website uses cookies').exists():
           click('I understand and I accept the use of cookies')
@@ -296,7 +322,7 @@ def fetch_mifor():
     max_retries = 5
     while retry_count < max_retries:
         # Start chrome and open URL
-        start_chrome("https://www.fbil.org.in/#/home", headless=True)
+        start_chrome("https://www.fbil.org.in/#/home", options=options)
 
         if Text('Our website uses cookies').exists():
           click('I understand and I accept the use of cookies')
