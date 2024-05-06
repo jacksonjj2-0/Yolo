@@ -60,7 +60,7 @@ def fetch_euroestr_rate():
     estr_rate = None
     
     while retry_count < max_retries:
-        start_chrome("https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html", headless=True)
+        start_chrome("https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html",  options=options)
 
         if Text('Our website uses cookies').exists():
             click('I understand and I accept the use of cookies')
@@ -115,7 +115,7 @@ def fetch_sofr_rate():
     sofr_rate = None
     
     while retry_count < max_retries:
-        start_chrome("https://www.newyorkfed.org/markets/reference-rates/sofr", headless=True)
+        start_chrome("https://www.newyorkfed.org/markets/reference-rates/sofr",  options=options)
         click("Resources")
         press(PAGE_DOWN)
         click("DATE")
@@ -382,7 +382,7 @@ def fetch_tonar_rate():
     max_retries = 5
     while retry_count < max_retries:
         # Start chrome and open URL
-        start_chrome("https://www.realisedrate.com/TONAR", headless=True)
+        start_chrome("https://www.realisedrate.com/TONAR",  options=options)
 
         if Text('We care about your privacy').exists():
           click('Allow All Cookies')
